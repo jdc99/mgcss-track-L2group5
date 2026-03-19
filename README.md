@@ -1,1 +1,1 @@
-L2
+[![Java CI](https://github.com/jdc99/mgcss-track-L2group5/actions/workflows/ci.yml/badge.svg)](https://github.com/jdc99/mgcss-track-L2group5/actions/workflows/ci.yml)
