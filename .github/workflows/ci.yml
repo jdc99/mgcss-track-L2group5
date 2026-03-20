@@ -23,7 +23,9 @@ jobs:
           cache: maven
 
       - name: Construir con Maven
-        run: mvn -B clean verify
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=jdc99_mgcss-track-L2group5
 
       - name: Upload test results
         if: always()
