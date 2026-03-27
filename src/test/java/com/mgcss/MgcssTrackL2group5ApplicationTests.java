@@ -1,8 +1,6 @@
 package com.mgcss;
 
 import com.mgcss.domain.Solicitud;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -14,17 +12,6 @@ class MgcssTrackL2group5ApplicationTests {
 	@Test
 	void contextLoads() {
 	}
-
-
-    @BeforeAll
-    static void beforeAll() {
-
-    }
-
-    @AfterAll
-    static void afterAll() {
-
-    }
 
     @Test
     void uniqueIdSolicitud() {
