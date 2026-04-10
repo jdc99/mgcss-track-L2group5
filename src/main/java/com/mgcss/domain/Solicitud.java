@@ -60,8 +60,13 @@ public class Solicitud {
         return tecnicoAsignado;
     }
 
-    public void setTecnicoAsignado(Tecnico tecnicoAsignado) {
-        this.tecnicoAsignado = tecnicoAsignado;
+    public Boolean setTecnicoAsignado(Tecnico tecnicoAsignado) {
+        if(tecnicoAsignado.getActivo())
+        {this.tecnicoAsignado = tecnicoAsignado;
+        return true;}
+        else {
+            return false;
+        }
     }
 
     public Date getFechaCreacion() {
