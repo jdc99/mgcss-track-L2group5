@@ -36,9 +36,10 @@ public class SolicitudService {
     }
 
     public void asignarTecnico(Long solicitudId, Tecnico tecnico) {
-        Optional<Solicitud> solicitud = solicitudRepository.findById(solicitudId);
-        solicitud.get().setTecnicoAsignado(tecnico);
-        solicitudRepository.save(solicitud.orElse(null));
+        Solicitud solicitud = solicitudRepository.findById(solicitudId)
+                .orElseThrow(() -> new IllegalArgumentException("No existe la solicitud con id " + solicitudId));
+        solicitud.setTecnicoAsignado(tecnico);
+        solicitudRepository.save(solicitud);
     }
 
 
