@@ -1,10 +1,11 @@
-package com.mgcss.service;
+package com.mgcss.unit.service;
 
 // archivo: SolicitudServiceTest.java
 
-import com.mgcss.domain.Solicitud;
-import com.mgcss.domain.SolicitudRepository;
-import com.mgcss.domain.Tecnico;
+import com.mgcss.domain.model.Solicitud;
+import com.mgcss.domain.repository.SolicitudRepository;
+import com.mgcss.domain.model.Tecnico;
+import com.mgcss.service.SolicitudService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -67,4 +68,5 @@ class SolicitudServiceTest {
         // 5. Verificar que save NO fue llamado
         verify(solicitudRepository, times(0)).save(any(Solicitud.class));
     }
+
 }

@@ -1,4 +1,5 @@
-package com.mgcss.domain;
+package com.mgcss.domain.model;
+
 
 public class Cliente {
 

@@ -1,4 +1,6 @@
-package com.mgcss.domain;
+package com.mgcss.domain.repository;
+
+import com.mgcss.domain.model.Solicitud;
 
 import java.util.Optional;
 

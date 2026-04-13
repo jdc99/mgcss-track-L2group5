@@ -1,9 +1,9 @@
 package com.mgcss.service;
 
-import com.mgcss.domain.Estado;
-import com.mgcss.domain.Solicitud;
-import com.mgcss.domain.SolicitudRepository;
-import com.mgcss.domain.Tecnico;
+import com.mgcss.domain.model.Estado;
+import com.mgcss.domain.model.Solicitud;
+import com.mgcss.domain.repository.SolicitudRepository;
+import com.mgcss.domain.model.Tecnico;
 
 import java.util.Optional;
 

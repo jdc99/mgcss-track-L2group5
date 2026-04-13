@@ -1,9 +1,16 @@
-package com.mgcss.domain;
+package com.mgcss.domain.model;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 
 import java.util.Date;
 import java.util.Random;
 
+
+
 public class Solicitud {
+
     private final Long id;
     private Cliente cliente;
     private String descripcion;
