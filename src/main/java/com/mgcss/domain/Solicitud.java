@@ -26,5 +26,4 @@ public class Solicitud {
         }
         estadoSolicitud = EstadoSolicitud.CERRADA;
     }
-    // este comentario no sirve para nada
 }

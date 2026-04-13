@@ -12,7 +12,7 @@ class SolicitudTest {
     @Test
     void cierreSolicitudRequiereEstadoEnProceso() {
         Solicitud solicitud = new Solicitud(1L,
-                new Cliente(),
+                new Cliente(1L, "", "@", TipoCliente.STANDARD),
                 "",
                 Date.from(Instant.now()),
                 EstadoSolicitud.ABIERTA,
