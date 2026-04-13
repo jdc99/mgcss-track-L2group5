@@ -2,9 +2,9 @@ package com.mgcss.service;
 
 // archivo: SolicitudServiceTest.java
 
-import com.mgcss.domain.Solicitud;
-import com.mgcss.domain.SolicitudRepository;
-import com.mgcss.domain.Tecnico;
+import com.mgcss.domain.model.Solicitud;
+import com.mgcss.domain.repository.SolicitudRepository;
+import com.mgcss.domain.model.Tecnico;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
