@@ -17,6 +17,6 @@ class SolicitudTest {
                 Date.from(Instant.now()),
                 EstadoSolicitud.ABIERTA,
                 null);
-        assertThrows(IllegalStateException.class, solicitud::cerrarSolicitudEnProceso);
+        assertThrows(IllegalStateException.class, solicitud::cerrar);
     }
 }

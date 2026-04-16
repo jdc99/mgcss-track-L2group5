@@ -20,7 +20,7 @@ public class Solicitud {
         this.fechaCierre = fechaCierre;
     }
 
-    public void cerrarSolicitudEnProceso() {
+    public void cerrar() {
         if (estadoSolicitud != EstadoSolicitud.EN_PROCESO) {
             throw new IllegalStateException("No se puede cerrar si no esta en proceso.");
         }
