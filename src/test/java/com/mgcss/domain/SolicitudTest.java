@@ -21,19 +21,26 @@ class SolicitudTest {
     }
 
     @Test
-    void asignarTecnicoRequiereEstadoActivo() {
+    void asignarTecnicoEstaPermitido() {
         Solicitud solicitud = new Solicitud(1L,
                 new Cliente(1L, "", "@", TipoCliente.PREMIUM),
                 "",
                 Date.from(Instant.now()),
                 EstadoSolicitud.ABIERTA,
                 null);
-
         Tecnico tecnicoActivo = new Tecnico(1L, "", "", true);
-        Tecnico tecnicoInactivo = new Tecnico(2L, "", "", false);
-
         assertDoesNotThrow(() -> solicitud.asignar(tecnicoActivo));
-        assertThrows(IllegalArgumentException.class, () -> solicitud.asignar(tecnicoInactivo));
+    }
 
+    @Test
+    void asignarTecnicoInactivoNoEstaPermitido() {
+        Solicitud solicitud = new Solicitud(1L,
+                new Cliente(1L, "", "@", TipoCliente.PREMIUM),
+                "",
+                Date.from(Instant.now()),
+                EstadoSolicitud.ABIERTA,
+                null);
+        Tecnico tecnicoInactivo = new Tecnico(2L, "", "", false);
+        assertThrows(IllegalArgumentException.class, () -> solicitud.asignar(tecnicoInactivo));
     }
 }
