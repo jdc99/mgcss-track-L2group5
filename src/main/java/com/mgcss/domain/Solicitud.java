@@ -19,6 +19,7 @@ public class Solicitud {
         this.fechaCreacion = fechaCreacion;
         this.estadoSolicitud = estadoSolicitud;
         this.fechaCierre = fechaCierre;
+        tecnicoAsignado = null;
     }
 
     public void cerrar() {
