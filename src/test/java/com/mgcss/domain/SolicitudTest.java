@@ -10,8 +10,19 @@ import static org.junit.jupiter.api.Assertions.*;
 class SolicitudTest {
 
     @Test
-    void cierreSolicitudRequiereEstadoEnProceso() {
+    void cerrarSolicitudEnProcesoEstaPermitido() {
         Solicitud solicitud = new Solicitud(1L,
+                new Cliente(1L, "", "@", TipoCliente.STANDARD),
+                "",
+                Date.from(Instant.now()),
+                EstadoSolicitud.EN_PROCESO,
+                null);
+        assertDoesNotThrow(solicitud::cerrar);
+    }
+
+    @Test
+    void cerrarSolicitudNoEnProcesoEstaProhibido() {
+        Solicitud solicitud = new Solicitud(2L,
                 new Cliente(1L, "", "@", TipoCliente.STANDARD),
                 "",
                 Date.from(Instant.now()),
