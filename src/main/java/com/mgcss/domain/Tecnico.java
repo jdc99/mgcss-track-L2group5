@@ -12,4 +12,8 @@ public class Tecnico {
         this.especialidad = especialidad;
         this.activo = activo;
     }
+
+    public boolean estaActivo() {
+        return activo;
+    }
 }

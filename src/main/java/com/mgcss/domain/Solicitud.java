@@ -10,6 +10,7 @@ public class Solicitud {
     private Date fechaCreacion;
     private EstadoSolicitud estadoSolicitud;
     private Date fechaCierre;
+    private Tecnico tecnicoAsignado;
 
     public Solicitud(Long id, Cliente cliente, String descripcion, Date fechaCreacion, EstadoSolicitud estadoSolicitud, Date fechaCierre) {
         this.id = id;
@@ -25,5 +26,12 @@ public class Solicitud {
             throw new IllegalStateException("No se puede cerrar si no esta en proceso.");
         }
         estadoSolicitud = EstadoSolicitud.CERRADA;
+    }
+
+    public void asignar(Tecnico tecnicoAsignado) {
+        if (!tecnicoAsignado.estaActivo()) {
+            throw new IllegalArgumentException("No se puede asignar un tecnico inactivo.");
+        }
+        this.tecnicoAsignado = tecnicoAsignado;
     }
 }
