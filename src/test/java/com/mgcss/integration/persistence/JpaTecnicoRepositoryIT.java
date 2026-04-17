@@ -2,7 +2,6 @@ package com.mgcss.integration.persistence;
 
 
 import com.mgcss.MgcssTrackL2group5Application;
-import com.mgcss.domain.model.Estado;
 import com.mgcss.infrastructure.persistence.*;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,6 @@ import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 
-import java.util.Date;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;

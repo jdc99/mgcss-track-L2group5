@@ -1,7 +1,6 @@
 package com.mgcss.infrastructure.persistence;
 
 import jakarta.persistence.*;
-import lombok.Setter;
 
 @Entity
 @Table(name = "Tecnico")
@@ -17,7 +16,7 @@ public class TecnicoEntity {
     public TecnicoEntity() {
     }
 
-    public TecnicoEntity(Long id, String nombre, String especialidad, Boolean activo)
+    public TecnicoEntity(String nombre, String especialidad, Boolean activo)
     {
         this.nombre = nombre;
         this.especialidad = especialidad;

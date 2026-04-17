@@ -39,11 +39,7 @@ public class Cliente {
         this.tipoCliente = telefono;
     }
 
-    // @TODO
-    public Cliente consultarCliente(Long id)
-    {
-        return this;
-    }
+
 
     @Override
     public String toString() {

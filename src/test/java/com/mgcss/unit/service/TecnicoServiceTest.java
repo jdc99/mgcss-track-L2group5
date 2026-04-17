@@ -37,7 +37,10 @@ class TecnicoServiceTest {
         Tecnico tecnico = new Tecnico("María", "Software", false);
         given(repo.findById(tecnico.getId())).willReturn(Optional.of(tecnico));
 
-        assertThrows(IllegalStateException.class, () -> service.suspenderTecnico(tecnico.getId()));
+
+        Long tecnicoId = tecnico.getId();
+
+        assertThrows(IllegalStateException.class, () -> service.suspenderTecnico(tecnicoId));
 
         // Verificamos que no se realizó ninguna operación de escritura
         verify(repo, never()).save(any(Tecnico.class));

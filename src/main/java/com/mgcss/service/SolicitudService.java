@@ -11,7 +11,7 @@ public class SolicitudService {
 
 
     private final SolicitudRepository solicitudRepository;
-    //private final TecnicoRepository tecnicoRepository;
+
 
     public SolicitudService(SolicitudRepository solicitud)
     {

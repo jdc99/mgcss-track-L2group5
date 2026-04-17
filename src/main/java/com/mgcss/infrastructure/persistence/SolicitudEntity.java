@@ -24,8 +24,6 @@ public class SolicitudEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCierre;
 
-    public SolicitudEntity() {
-    }
 
     public Long getId() {
         return id;

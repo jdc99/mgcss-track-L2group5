@@ -31,7 +31,7 @@ public class Tecnico {
         return activo;
     }
 
-    // @TODO
+
     public void activar()
     {
         activo = !activo;

@@ -1,8 +1,6 @@
 package com.mgcss.domain.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+
 
 import java.util.Date;
 import java.util.Random;
@@ -68,7 +66,7 @@ public class Solicitud {
     }
 
     public Boolean setTecnicoAsignado(Tecnico tecnicoAsignado) {
-        if(tecnicoAsignado.getActivo())
+        if (Boolean.TRUE.equals(tecnicoAsignado.getActivo()))
         {this.tecnicoAsignado = tecnicoAsignado;
         return true;}
         else {

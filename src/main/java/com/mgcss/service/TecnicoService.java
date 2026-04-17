@@ -22,7 +22,7 @@ public class TecnicoService {
 
         Tecnico tecnico = tecnicoOpt.get();
 
-        if (!tecnico.getActivo()) {
+        if (tecnico.getActivo().equals(Boolean.FALSE)) {
             throw new IllegalStateException("El técnico ya se encuentra inactivo.");
         }
 

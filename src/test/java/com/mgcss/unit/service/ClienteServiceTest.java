@@ -38,7 +38,8 @@ class ClienteServiceTest {
         Cliente cliente = new Cliente("Ana", "ana@email.com", TipoCliente.PREMIUM);
         given(repo.findById(cliente.getId())).willReturn(Optional.of(cliente));
 
-        assertThrows(IllegalStateException.class, () -> service.upgradeAPremium(cliente.getId()));
+        Long clienteId = cliente.getId();
+        assertThrows(IllegalStateException.class, () -> service.upgradeAPremium(clienteId));
 
         // Verificamos que no se intentó guardar en BD si falló la regla de negocio
         verify(repo, never()).save(any(Cliente.class));

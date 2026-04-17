@@ -75,10 +75,7 @@ public class ClienteEntity {
     }
 
 
-    public ClienteEntity consultarCliente(Long id)
-    {
-        return this;
-    }
+
 
     @Override
     public String toString()
