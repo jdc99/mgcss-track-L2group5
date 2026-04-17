@@ -1,4 +1,4 @@
-package com.mgcss.domain;
+package com.mgcss.domain.model;
 
 import org.junit.jupiter.api.Test;
 
