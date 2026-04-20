@@ -35,4 +35,8 @@ public class Solicitud {
         }
         this.tecnicoAsignado = tecnicoAsignado;
     }
+
+    public boolean tieneTecnicoAsignado() {
+        return false;
+    }
 }

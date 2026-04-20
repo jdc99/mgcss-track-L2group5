@@ -11,4 +11,9 @@ public class SolicitudService {
         this.solicitudRepository = solicitud;
         this.tecnicoRepository = tecnicoRepository;
     }
+
+    public void asignarTecnico(long l, long l1) {
+        /* TODO: obtener instancias a traves de los repositorios por sus
+            id's y llamar a asignar(tecnico) guardando finalmente el estado */
+    }
 }
