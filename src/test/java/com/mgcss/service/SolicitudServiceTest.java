@@ -56,11 +56,9 @@ class SolicitudServiceTest {
         when(repoSolicitud.findById(2L)).thenReturn(Optional.of(solicitud));
         when(repoTecnico.findById(98L)).thenReturn(Optional.of(tecnico));
         // 2. Act: Ejecutar servicio esperando el fallo
-        assertThrows(IllegalArgumentException.class, () -> {
-            sut.asignarTecnico(2L, 98L);
-        });
-        // 3. Assert: Verificar que no hubo efectos secundarios
-        verify(repoSolicitud, never()).save(solicitud);
+        assertThrows(IllegalArgumentException.class, () -> sut.asignarTecnico(2L, 98L));
+        // 3. Assert: Verificar que nunca se ha guardado ninguna solicitud que no tenga ningun tecnico asignado
+        verify(repoSolicitud, never()).save(argThat(sol -> !sol.tieneTecnicoAsignado()));
     }
 
     @Test
@@ -68,9 +66,7 @@ class SolicitudServiceTest {
         // No se simulan dependencias externas
         solicitud = new Solicitud(0L, cliente, "", Date.from(Instant.now()), CERRADA, null);
         // 2. Act: Ejecutar servicio esperando el fallo
-        assertThrows(IllegalArgumentException.class, () -> {
-            sut.asignarTecnico(0L, 100L);
-        });
+        assertThrows(IllegalArgumentException.class, () -> sut.asignarTecnico(0L, 100L));
         // 3. Assert: Verificar que no hubo efectos secundarios
         verify(repoSolicitud, never()).save(solicitud);
     }

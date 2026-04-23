@@ -16,7 +16,7 @@ public class SolicitudService {
 
     public void asignarTecnico(Long solicitudId, Long tecnicoId) {
         Solicitud solicitud = solicitudRepository.findById(solicitudId).orElseThrow(() -> new IllegalArgumentException("Solicitud no encontrada"));
-        Tecnico  tecnico = tecnicoRepository.findById(tecnicoId).orElseThrow(() -> new IllegalArgumentException("Tecnico no encontrado"));
+        Tecnico tecnico = tecnicoRepository.findById(tecnicoId).orElseThrow(() -> new IllegalArgumentException("Tecnico no encontrado"));
 
         solicitud.asignar(tecnico);
         solicitudRepository.save(solicitud);
