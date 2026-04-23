@@ -1,5 +1,6 @@
-package com.mgcss.domain.model;
+package com.mgcss.unit.domain.model;
 
+import com.mgcss.domain.model.*;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;

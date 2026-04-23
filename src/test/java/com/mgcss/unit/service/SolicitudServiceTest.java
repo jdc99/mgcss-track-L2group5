@@ -1,10 +1,11 @@
-package com.mgcss.service;
+package com.mgcss.unit.service;
 
 import com.mgcss.domain.model.Cliente;
 import com.mgcss.domain.model.Solicitud;
 import com.mgcss.domain.model.Tecnico;
 import com.mgcss.domain.repository.SolicitudRepository;
 import com.mgcss.domain.repository.TecnicoRepository;
+import com.mgcss.service.SolicitudService;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
