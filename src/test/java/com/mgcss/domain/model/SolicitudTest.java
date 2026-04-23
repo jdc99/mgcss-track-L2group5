@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.Date;
 import java.time.Instant;
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,7 +15,7 @@ class SolicitudTest {
         Solicitud solicitud = new Solicitud(1L,
                 new Cliente(1L, "", "@", TipoCliente.STANDARD),
                 "",
-                Date.from(Instant.now()),
+                LocalDate.now(),
                 EstadoSolicitud.EN_PROCESO,
                 null);
         assertDoesNotThrow(solicitud::cerrar);
@@ -25,7 +26,7 @@ class SolicitudTest {
         Solicitud solicitud = new Solicitud(2L,
                 new Cliente(1L, "", "@", TipoCliente.STANDARD),
                 "",
-                Date.from(Instant.now()),
+                LocalDate.now(),
                 EstadoSolicitud.ABIERTA,
                 null);
         assertThrows(IllegalStateException.class, solicitud::cerrar);
@@ -36,7 +37,7 @@ class SolicitudTest {
         Solicitud solicitud = new Solicitud(1L,
                 new Cliente(1L, "", "@", TipoCliente.PREMIUM),
                 "",
-                Date.from(Instant.now()),
+                LocalDate.now(),
                 EstadoSolicitud.ABIERTA,
                 null);
         Tecnico tecnicoActivo = new Tecnico(1L, "", "", true);
@@ -48,7 +49,7 @@ class SolicitudTest {
         Solicitud solicitud = new Solicitud(1L,
                 new Cliente(1L, "", "@", TipoCliente.PREMIUM),
                 "",
-                Date.from(Instant.now()),
+                LocalDate.now(),
                 EstadoSolicitud.ABIERTA,
                 null);
         Tecnico tecnicoInactivo = new Tecnico(2L, "", "", false);

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 
@@ -38,7 +39,7 @@ class SolicitudServiceTest {
     @Test
     void debeAsignarTecnicoCorrectamente() {
         // Simular dependencias externas
-        solicitud = new Solicitud(1L, cliente, "", Date.from(Instant.now()), ABIERTA, null);
+        solicitud = new Solicitud(1L, cliente, "", LocalDate.now(), ABIERTA, null);
         tecnico = new Tecnico(99L, "", "", true);
         when(repoSolicitud.findById(1L)).thenReturn(Optional.of(solicitud));
         when(repoTecnico.findById(99L)).thenReturn(Optional.of(tecnico));
@@ -51,7 +52,7 @@ class SolicitudServiceTest {
     @Test
     void debeLanzarExcepcionAlAsignarTecnicoInactivo() {
         // Simular dependencias externas
-        solicitud = new Solicitud(2L, cliente, "", Date.from(Instant.now()), ABIERTA, null);
+        solicitud = new Solicitud(2L, cliente, "", LocalDate.now(), ABIERTA, null);
         tecnico = new Tecnico(98L, "", "", false);
         when(repoSolicitud.findById(2L)).thenReturn(Optional.of(solicitud));
         when(repoTecnico.findById(98L)).thenReturn(Optional.of(tecnico));
@@ -64,7 +65,7 @@ class SolicitudServiceTest {
     @Test
     void debeLanzarExcepcionSiIdInexistente() {
         // No se simulan dependencias externas
-        solicitud = new Solicitud(0L, cliente, "", Date.from(Instant.now()), CERRADA, null);
+        solicitud = new Solicitud(0L, cliente, "", LocalDate.now(), CERRADA, null);
         // 2. Act: Ejecutar servicio esperando el fallo
         assertThrows(IllegalArgumentException.class, () -> sut.asignarTecnico(0L, 100L));
         // 3. Assert: Verificar que no hubo efectos secundarios
