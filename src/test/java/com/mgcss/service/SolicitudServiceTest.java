@@ -3,9 +3,9 @@ package com.mgcss.service;
 import com.mgcss.domain.model.Cliente;
 import com.mgcss.domain.model.Solicitud;
 import com.mgcss.domain.model.Tecnico;
-import com.mgcss.domain.repository.ClienteRepository;
 import com.mgcss.domain.repository.SolicitudRepository;
 import com.mgcss.domain.repository.TecnicoRepository;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.time.Instant;
@@ -19,19 +19,29 @@ import static org.mockito.Mockito.*;
 
 class SolicitudServiceTest {
 
+    private static SolicitudRepository repoSolicitud;
+    private static TecnicoRepository repoTecnico;
+    private static SolicitudService sut;
+    private static Solicitud solicitud;
+    private static Tecnico tecnico;
+    private static Cliente cliente;
+
+    @BeforeAll
+    static void beforeAll() {
+        // 1. Arrange: Crear mocks y datos
+        repoSolicitud = mock(SolicitudRepository.class);
+        repoTecnico = mock(TecnicoRepository.class);
+        sut = new SolicitudService(repoSolicitud, repoTecnico);
+        cliente = new Cliente(1L, "", "", STANDARD);
+    }
+
     @Test
     void debeAsignarTecnicoCorrectamente() {
-        // 1. Arrange: Crear mocks y datos
-        SolicitudRepository repoSolicitud = mock(SolicitudRepository.class);
-        TecnicoRepository repoTecnico = mock(TecnicoRepository.class);
-        ClienteRepository repoCliente = mock(ClienteRepository.class);
-        SolicitudService sut = new SolicitudService(repoSolicitud, repoTecnico);
         // Simular dependencias externas
-        when(repoCliente.findById(1L)).thenReturn(Optional.of(new Cliente(1L, "", "", STANDARD)));
-        Cliente cliente = repoCliente.findById(1L).get();
-
-        when(repoSolicitud.findById(1L)).thenReturn(Optional.of(new Solicitud(1L, cliente, "", Date.from(Instant.now()), ABIERTA, null)));
-        when(repoTecnico.findById(99L)).thenReturn(Optional.of(new Tecnico(99L, "", "", true)));
+        solicitud = new Solicitud(1L, cliente, "", Date.from(Instant.now()), ABIERTA, null);
+        tecnico = new Tecnico(99L, "", "", true);
+        when(repoSolicitud.findById(1L)).thenReturn(Optional.of(solicitud));
+        when(repoTecnico.findById(99L)).thenReturn(Optional.of(tecnico));
         // 2. Act: Ejecutar servicio
         sut.asignarTecnico(1L, 99L);
         // 3. Assert: Verificar la orquestación
@@ -40,22 +50,16 @@ class SolicitudServiceTest {
 
     @Test
     void debeLanzarExcepcionAlAsignarTecnicoInactivo() {
-        // 1. Arrange: Crear mocks y datos
-        SolicitudRepository repoSolicitud = mock(SolicitudRepository.class);
-        TecnicoRepository repoTecnico = mock(TecnicoRepository.class);
-        ClienteRepository repoCliente = mock(ClienteRepository.class);
-        SolicitudService sut = new SolicitudService(repoSolicitud, repoTecnico);
         // Simular dependencias externas
-        when(repoCliente.findById(1L)).thenReturn(Optional.of(new Cliente(1L, "", "", STANDARD)));
-        Cliente cliente = repoCliente.findById(1L).get();
-
-        when(repoSolicitud.findById(1L)).thenReturn(Optional.of(new Solicitud(1L, cliente, "", Date.from(Instant.now()), ABIERTA, null)));
-        when(repoTecnico.findById(99L)).thenReturn(Optional.of(new Tecnico(99L, "", "", false)));
+        solicitud = new Solicitud(2L, cliente, "", Date.from(Instant.now()), ABIERTA, null);
+        tecnico = new Tecnico(98L, "", "", false);
+        when(repoSolicitud.findById(2L)).thenReturn(Optional.of(solicitud));
+        when(repoTecnico.findById(98L)).thenReturn(Optional.of(tecnico));
         // 2. Act: Ejecutar servicio esperando el fallo
         assertThrows(IllegalArgumentException.class, () -> {
-            sut.asignarTecnico(1L, 99L);
+            sut.asignarTecnico(2L, 98L);
         });
         // 3. Assert: Verificar que no hubo efectos secundarios
-        verify(repoSolicitud, never()).save(any());
+        verify(repoSolicitud, never()).save(solicitud);
     }
 }
