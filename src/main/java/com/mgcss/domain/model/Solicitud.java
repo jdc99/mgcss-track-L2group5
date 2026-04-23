@@ -37,6 +37,7 @@ public class Solicitud {
     }
 
     public boolean tieneTecnicoAsignado() {
-        return false;
+        // TODO: implementacion minima, debe contemplarse caso alterno
+        return tecnicoAsignado != null;
     }
 }

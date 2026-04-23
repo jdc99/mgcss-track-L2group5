@@ -1,5 +1,7 @@
 package com.mgcss.service;
 
+import com.mgcss.domain.model.Solicitud;
+import com.mgcss.domain.model.Tecnico;
 import com.mgcss.domain.repository.SolicitudRepository;
 import com.mgcss.domain.repository.TecnicoRepository;
 
@@ -12,8 +14,12 @@ public class SolicitudService {
         this.tecnicoRepository = tecnicoRepository;
     }
 
-    public void asignarTecnico(long l, long l1) {
-        /* TODO: obtener instancias a traves de los repositorios por sus
-            id's y llamar a asignar(tecnico) guardando finalmente el estado */
+    public void asignarTecnico(Long solicitudId, Long tecnicoId) {
+        /* TODO: implementacion minima, debe contemplarse si no se encuentra el Id en el repo */
+        Solicitud solicitud = solicitudRepository.findById(solicitudId).get();
+        Tecnico  tecnico = tecnicoRepository.findById(tecnicoId).get();
+
+        solicitud.asignar(tecnico);
+        solicitudRepository.save(solicitud);
     }
 }
