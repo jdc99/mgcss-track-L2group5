@@ -13,12 +13,12 @@ import java.util.Date;
 import java.util.Optional;
 
 import static com.mgcss.domain.model.EstadoSolicitud.ABIERTA;
+import static com.mgcss.domain.model.EstadoSolicitud.CERRADA;
 import static com.mgcss.domain.model.TipoCliente.STANDARD;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 
 class SolicitudServiceTest {
-
     private static SolicitudRepository repoSolicitud;
     private static TecnicoRepository repoTecnico;
     private static SolicitudService sut;
@@ -58,6 +58,18 @@ class SolicitudServiceTest {
         // 2. Act: Ejecutar servicio esperando el fallo
         assertThrows(IllegalArgumentException.class, () -> {
             sut.asignarTecnico(2L, 98L);
+        });
+        // 3. Assert: Verificar que no hubo efectos secundarios
+        verify(repoSolicitud, never()).save(solicitud);
+    }
+
+    @Test
+    void debeLanzarExcepcionSiIdInexistente() {
+        // No se simulan dependencias externas
+        solicitud = new Solicitud(0L, cliente, "", Date.from(Instant.now()), CERRADA, null);
+        // 2. Act: Ejecutar servicio esperando el fallo
+        assertThrows(IllegalArgumentException.class, () -> {
+            sut.asignarTecnico(0L, 100L);
         });
         // 3. Assert: Verificar que no hubo efectos secundarios
         verify(repoSolicitud, never()).save(solicitud);
