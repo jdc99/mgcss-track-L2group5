@@ -2,11 +2,10 @@ package com.mgcss.domain.model;
 
 import org.junit.jupiter.api.Test;
 
-import java.sql.Date;
-import java.time.Instant;
 import java.time.LocalDate;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class SolicitudTest {
 

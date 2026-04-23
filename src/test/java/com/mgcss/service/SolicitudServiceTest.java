@@ -8,9 +8,7 @@ import com.mgcss.domain.repository.TecnicoRepository;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.Optional;
 
 import static com.mgcss.domain.model.EstadoSolicitud.ABIERTA;
