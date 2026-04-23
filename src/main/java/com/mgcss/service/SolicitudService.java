@@ -9,8 +9,8 @@ public class SolicitudService {
     private final SolicitudRepository solicitudRepository;
     private final TecnicoRepository tecnicoRepository;
 
-    public SolicitudService(SolicitudRepository solicitud, TecnicoRepository tecnicoRepository) {
-        this.solicitudRepository = solicitud;
+    public SolicitudService(SolicitudRepository solicitudRepository, TecnicoRepository tecnicoRepository) {
+        this.solicitudRepository = solicitudRepository;
         this.tecnicoRepository = tecnicoRepository;
     }
 
