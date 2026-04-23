@@ -36,4 +36,6 @@ class SolicitudServiceTest {
         // 3. Assert: Verificar la orquestación
         verify(repoSolicitud).save(argThat(Solicitud::tieneTecnicoAsignado));
     }
+
+
 }
