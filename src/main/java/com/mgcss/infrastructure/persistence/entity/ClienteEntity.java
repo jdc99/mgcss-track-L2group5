@@ -26,4 +26,7 @@ public class ClienteEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_cliente", nullable = false)
     private TipoCliente tipoCliente;
+
+
+
 }

@@ -6,6 +6,5 @@ import java.util.Optional;
 
 public interface ClienteRepository {
     Cliente save(Cliente cliente);
-
     Optional<Cliente> findById(Long id);
 }

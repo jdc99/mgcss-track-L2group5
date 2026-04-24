@@ -55,4 +55,7 @@ class SolicitudTest {
         Tecnico tecnicoInactivo = new Tecnico(2L, "", "", false);
         assertThrows(IllegalArgumentException.class, () -> solicitud.asignar(tecnicoInactivo));
     }
+
+
+
 }

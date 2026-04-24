@@ -1,6 +1,6 @@
 package com.mgcss.domain.model;
 
-public class Cliente {
+public class Cliente{
 
     private final Long id;
     private String nombre;
