@@ -1,18 +1,19 @@
-package com.mgcss.domain;
+package com.mgcss.domain.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class Solicitud {
 
     private final Long id;
     private Cliente cliente;
     private String descripcion;
-    private Date fechaCreacion;
+    private LocalDate fechaCreacion;
     private EstadoSolicitud estadoSolicitud;
-    private Date fechaCierre;
+    private LocalDate fechaCierre;
     private Tecnico tecnicoAsignado;
 
-    public Solicitud(Long id, Cliente cliente, String descripcion, Date fechaCreacion, EstadoSolicitud estadoSolicitud, Date fechaCierre) {
+    // MAYBE : a futuro si da tiempo que estadoSolicitud en el constructor sea ABIERTA por defecto, y cambie a EN_PROCESO una vez se le asigne un Tecnico?
+    public Solicitud(Long id, Cliente cliente, String descripcion, LocalDate fechaCreacion, EstadoSolicitud estadoSolicitud, LocalDate fechaCierre) {
         this.id = id;
         this.cliente = cliente;
         this.descripcion = descripcion;
@@ -34,5 +35,9 @@ public class Solicitud {
             throw new IllegalArgumentException("No se puede asignar un tecnico inactivo.");
         }
         this.tecnicoAsignado = tecnicoAsignado;
+    }
+
+    public boolean tieneTecnicoAsignado() {
+        return tecnicoAsignado != null;
     }
 }
