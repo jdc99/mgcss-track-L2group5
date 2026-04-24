@@ -13,7 +13,19 @@ public class Tecnico {
         this.activo = activo;
     }
 
+
     public boolean estaActivo() {
         return activo;
+    }
+
+
+    public String consultarTecnico()
+    {
+        return "Tecnico{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", especialidad='" + especialidad + '\'' +
+                ", activo=" + activo +
+                '}';
     }
 }

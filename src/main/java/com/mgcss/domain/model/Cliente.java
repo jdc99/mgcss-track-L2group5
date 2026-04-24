@@ -13,4 +13,21 @@ public class Cliente {
         this.email = email;
         this.tipoCliente = tipoCliente;
     }
+
+    public void modificarDatosCliente(String nombre, String email, TipoCliente tipoCliente)
+    {
+        this.nombre = nombre;
+        this.email = email;
+        this.tipoCliente = tipoCliente;
+    }
+
+    public String consultarCliente()
+    {
+        return "Cliente{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", tipoCliente=" + tipoCliente +
+                '}';
+    }
 }

@@ -40,4 +40,17 @@ public class Solicitud {
     public boolean tieneTecnicoAsignado() {
         return tecnicoAsignado != null;
     }
+
+    public String consultarSolicitud()
+    {
+        return "Solicitud{" +
+                "id=" + id +
+                ", cliente=" + cliente +
+                ", descripcion='" + descripcion + '\'' +
+                ", fechaCreacion=" + fechaCreacion +
+                ", estadoSolicitud=" + estadoSolicitud +
+                ", fechaCierre=" + fechaCierre +
+                ", tecnicoAsignado=" + tecnicoAsignado +
+                '}';
+    }
 }
